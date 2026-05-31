@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Success feedback
             const originalText = copyBtn.innerText;
             copyBtn.innerText = 'COPIED!';
-            copyBtn.style.backgroundColor = '#70b343'; // Pepe light green
+            copyBtn.style.backgroundColor = '#ff9d00'; // Neon yellow
+            copyBtn.style.boxShadow = '0 0 20px #ff9d00';
             
             setTimeout(() => {
                 copyBtn.innerText = originalText;
-                copyBtn.style.backgroundColor = '#569033'; // Back to Pepe green
+                copyBtn.style.backgroundColor = ''; 
+                copyBtn.style.boxShadow = '';
             }, 2000);
         } catch (err) {
             console.error('Failed to copy text: ', err);
