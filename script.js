@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Generate floating balls
+    // Generate floating fists
     const container = document.getElementById('floating-balls-container');
-    const numBalls = 150; // Generate 150 balls everywhere
+    const numBalls = 60; // Generate 60 fists everywhere
 
     if (container) {
         for (let i = 0; i < numBalls; i++) {
             const ball = document.createElement('img');
-            ball.src = './testabolic.png';
+            ball.src = './homo.png';
             ball.classList.add('ball');
             
             // Randomize properties
@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const posY = Math.random() * 100; // 0% to 100%
             const delay = Math.random() * -30; // Negative delay so they start immediately
             const duration = Math.random() * 20 + 15; // 15s to 35s
-            const opacity = Math.random() * 0.3 + 0.1; // 0.1 to 0.4
-            const blur = Math.random() * 3 + 1; // 1px to 4px
+            const opacity = Math.random() * 0.4 + 0.2; // 0.2 to 0.6
+            const blur = Math.random() * 3; // 0px to 3px
 
             ball.style.width = `${size}px`;
             ball.style.left = `${posX}vw`;
