@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Generate floating balls
     const container = document.getElementById('floating-balls-container');
-    const numBalls = 40; // Generate 40 balls everywhere
+    const numBalls = 150; // Generate 150 balls everywhere
 
     if (container) {
         for (let i = 0; i < numBalls; i++) {
