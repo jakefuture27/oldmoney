@@ -34,4 +34,33 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(ball);
         }
     }
+
+    const copyBtn = document.getElementById('copy-btn');
+    const caText = document.getElementById('ca-text');
+
+    if (copyBtn && caText) {
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(caText.innerText);
+                
+                // Success feedback
+                const originalText = copyBtn.innerText;
+                copyBtn.innerText = 'COPIED!';
+                copyBtn.style.backgroundColor = '#4a86e8'; // Blue
+                copyBtn.style.color = '#fff';
+                
+                setTimeout(() => {
+                    copyBtn.innerText = originalText;
+                    copyBtn.style.backgroundColor = '#fff'; 
+                    copyBtn.style.color = '#000';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                copyBtn.innerText = 'ERROR';
+                setTimeout(() => {
+                    copyBtn.innerText = 'COPY';
+                }, 2000);
+            }
+        });
+    }
 });
