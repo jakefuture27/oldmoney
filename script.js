@@ -80,18 +80,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Make It Rain Minigame
+    // Live Market Cap Integration
     const mainLogo = document.getElementById('main-logo');
     const netWorthSpan = document.getElementById('net-worth');
-    let netWorth = 0;
+    
+    const CONTRACT_ADDRESS = 'DoQzMRpyfm5BgFGMqXkYNXwJqGpqWkBAp7A4XtBMpump';
+    
+    async function fetchMarketCap() {
+        if (!netWorthSpan) return;
+        try {
+            const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CONTRACT_ADDRESS}`);
+            const data = await response.json();
+            
+            if (data && data.pairs && data.pairs.length > 0) {
+                // Sort pairs by liquidity to get the most accurate market cap
+                const sortedPairs = data.pairs.sort((a, b) => (b.liquidity?.usd || 0) - (a.liquidity?.usd || 0));
+                const pair = sortedPairs[0];
+                const marketCap = pair.fdv || pair.marketCap || 0;
+                
+                if (marketCap > 0) {
+                    netWorthSpan.innerText = Math.floor(marketCap).toLocaleString();
+                } else {
+                    netWorthSpan.innerText = '0 (NEW)';
+                }
+            } else {
+                netWorthSpan.innerText = 'LOADING...';
+            }
+        } catch (error) {
+            console.error('Error fetching market cap:', error);
+        }
+    }
 
-    if (mainLogo && netWorthSpan) {
+    // Fetch immediately on load, then every 15 seconds
+    fetchMarketCap();
+    setInterval(fetchMarketCap, 15000);
+
+    if (mainLogo) {
         mainLogo.addEventListener('click', (e) => {
-            // Increase Net Worth
-            const earned = Math.floor(Math.random() * 90000) + 10000; // 10k to 100k
-            netWorth += earned;
-            netWorthSpan.innerText = netWorth.toLocaleString();
-
             // Spawn Coins
             const numCoins = Math.floor(Math.random() * 5) + 5; // 5 to 10 coins per click
             for (let i = 0; i < numCoins; i++) {
