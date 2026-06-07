@@ -1,9 +1,9 @@
 /* Base & Reset */
 :root {
-    --bg-space: #1a0033; /* Deep Royal Purple */
-    --box-bg: #2a004d;
-    --neon-blue: #ffd700; /* Repurposed to Gold */
-    --box-shadow: 0 0 20px var(--neon-blue);
+    --bg-space: #111111;
+    --box-bg: #222222;
+    --neon-blue: #ffffff;
+    --box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: 'Bangers', cursive; 
+    font-family: 'Playfair Display', serif; 
     background-color: var(--bg-space);
     color: #fff;
     min-height: 100vh;
@@ -41,10 +41,10 @@ body {
     100% { background-position: -550px -550px, -310px -490px, -120px -280px, -80px -50px; }
 }
 
-/* Gold Text Gradient */
-.gold-text {
-    color: #ffd700;
-    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 40px #ffd700;
+/* Old Text Styling */
+.old-text {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 0 #555;
 }
 
 .marquee-container {
@@ -86,7 +86,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 50;
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
 }
 
 .nav-logo {
@@ -118,7 +118,7 @@ body {
     border: none;
     padding: 0.4rem 1rem;
     font-size: 1.2rem;
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -135,7 +135,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     padding-top: 5rem;
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
     position: relative;
     z-index: 10;
 }
@@ -194,7 +194,7 @@ body {
     border: 2px solid #eee;
     padding: 0.6rem 2rem;
     font-size: 1.2rem;
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -210,7 +210,7 @@ body {
     border: 2px solid #555;
     padding: 0.6rem 2rem;
     font-size: 1.2rem;
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -224,7 +224,7 @@ body {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
     color: #555;
     font-size: 1rem;
     z-index: 10;
@@ -373,7 +373,7 @@ body {
 }
 
 #copy-btn {
-    font-family: 'Bangers', cursive;
+    font-family: 'Playfair Display', serif;
     background-color: var(--neon-blue);
     color: #000;
     border: none;
@@ -443,105 +443,118 @@ body {
     transform: scale(0.9);
 }
 
-/* Vault Intro Screen */
-.vault-container {
+/* CRT & Vintage Filters */
+.crt-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px);
+    pointer-events: none;
+    z-index: 900;
+}
+.crt-flicker {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 901;
+    background: rgba(0, 0, 0, 0.1);
+    animation: crtFlicker 0.1s infinite;
+}
+@keyframes crtFlicker {
+    0% { opacity: 0.05; }
+    50% { opacity: 0.1; }
+    100% { opacity: 0.05; }
+}
+.vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 902;
+    background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 150%);
+}
+
+/* TV Intro Screen */
+.tv-intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
     z-index: 1000;
     display: flex;
-    overflow: hidden;
-    background-color: transparent;
-    pointer-events: auto;
-}
-
-.vault-door {
-    width: 50vw;
-    height: 100vh;
-    background: linear-gradient(90deg, #222, #444, #222);
-    border: 10px solid #111;
-    position: absolute;
-    top: 0;
-    transition: transform 2s cubic-bezier(0.64, 0, 0.78, 0);
-    display: flex;
-    align-items: center;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
-}
-
-.vault-left {
-    left: 0;
-    border-right: 5px solid #000;
-}
-
-.vault-right {
-    right: 0;
-    border-left: 5px solid #000;
-}
-
-.vault-center-piece {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1001;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s, transform 0.5s;
 }
-
-.vault-wheel {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 20px solid #ffd700;
-    background: radial-gradient(circle, #555 30%, #222 100%);
-    box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.5);
+.tv-noise {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
+    animation: noise 0.2s infinite;
+    opacity: 0.3;
+}
+@keyframes noise {
+    0%, 100% { background-position: 0 0; }
+    10% { background-position: -5% -10%; }
+    20% { background-position: -15% 5%; }
+    30% { background-position: 7% -25%; }
+    40% { background-position: 20% 25%; }
+    50% { background-position: -25% 10%; }
+    60% { background-position: 15% 5%; }
+    70% { background-position: 0% 15%; }
+    80% { background-position: 25% 35%; }
+    90% { background-position: -10% 10%; }
+}
+.tv-center {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: -150px; /* Overlap button */
-    transition: transform 2s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1s 1s;
+    z-index: 1001;
+    text-align: center;
 }
-
-.vault-wheel::before, .vault-wheel::after {
-    content: '';
-    position: absolute;
-    background: #ffd700;
+.tv-title {
+    font-size: 5rem;
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+    letter-spacing: 10px;
+    margin-bottom: 2rem;
 }
-.vault-wheel::before { width: 100%; height: 20px; }
-.vault-wheel::after { height: 100%; width: 20px; }
-
-.vault-btn {
-    background: linear-gradient(to bottom, #ffd700, #b8860b);
-    color: #000;
-    font-family: 'Bangers', cursive;
+.tv-btn {
     font-size: 2rem;
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
     padding: 1rem 3rem;
-    border: 4px solid #fff;
-    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 0 20px #ffd700;
-    z-index: 1002;
-    transition: transform 0.2s, box-shadow 0.2s, opacity 0.5s;
+    transition: all 0.2s;
+}
+.tv-btn:hover {
+    background: #fff;
+    color: #000;
+}
+.tv-off {
+    animation: tvTurnOff 0.5s forwards;
+}
+@keyframes tvTurnOff {
+    0% { transform: scale(1, 1); filter: brightness(1); }
+    60% { transform: scale(1, 0.001); filter: brightness(2); }
+    100% { transform: scale(0, 0); filter: brightness(0); opacity: 0; display: none; }
 }
 
-.vault-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px #ffd700;
+/* Glitch Image effect */
+.glitch-container {
+    animation: imgGlitch 5s infinite;
+}
+@keyframes imgGlitch {
+    0%, 96%, 100% { transform: translate(0,0) skew(0deg); filter: grayscale(100%); }
+    97% { transform: translate(-5px, 5px) skew(5deg); filter: grayscale(100%) invert(20%); }
+    98% { transform: translate(5px, -5px) skew(-5deg); filter: grayscale(100%) contrast(150%); }
+    99% { transform: translate(-2px, 2px) skew(2deg); filter: grayscale(100%); }
 }
 
-.vault-btn:active {
-    transform: scale(0.95);
-}
-
-.vault-open .vault-left { transform: translateX(-100%); }
-.vault-open .vault-right { transform: translateX(100%); }
-.vault-open .vault-wheel { transform: rotate(720deg) scale(0.5); opacity: 0; }
-.vault-open .vault-btn { opacity: 0; pointer-events: none; }
+/* Force Greyscale globally */
+body { filter: grayscale(100%); }
 
 /* Physics Coin */
 .physics-coin {

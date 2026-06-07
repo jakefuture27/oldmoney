@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="$DIGITAL - Digital Money Coin">
-    <title>$DIGITAL | DIGITAL MONEY</title>
+    <meta name="description" content="$OLDMONEY - Generational Wealth">
+    <title>$OLDMONEY | Generational Wealth</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Comic+Neue:wght@700&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="star-texture"></div>
 
-    <!-- Vault Intro Screen -->
-    <div id="intro-screen" class="vault-container">
-        <div class="vault-door vault-left" id="vault-left"></div>
-        <div class="vault-door vault-right" id="vault-right"></div>
-        
-        <div class="vault-center-piece" id="vault-lock">
-            <div class="vault-wheel"></div>
-            <button id="enter-btn" class="vault-btn">UNLOCK WEALTH</button>
+    <div class="crt-overlay"></div>
+    <div class="crt-flicker"></div>
+    <div class="vignette"></div>
+
+    <!-- Old TV Intro Screen -->
+    <div id="intro-screen" class="tv-intro-container">
+        <div class="tv-noise"></div>
+        <div class="tv-center">
+            <h1 class="tv-title" style="font-family: 'Playfair Display', serif;">NO SIGNAL</h1>
+            <button id="enter-btn" class="tv-btn" style="font-family: 'Playfair Display', serif;">TUNE IN</button>
         </div>
     </div>
 
@@ -29,19 +31,19 @@
 
         <!-- Navbar -->
         <nav class="navbar">
-            <div class="nav-logo">$DIGITAL</div>
+            <div class="nav-logo">$OLDMONEY</div>
             <div class="nav-links">
                 <a href="#about">ABOUT</a>
                 <a href="https://x.com/zurh1x/status/2063463933327945802" target="_blank">TWITTER</a>
-                <button class="nav-btn">BUY $DIGITAL</button>
+                <button class="nav-btn">BUY $OLDMONEY</button>
             </div>
         </nav>
 
         <!-- Floating Background Elements -->
         <div class="floating-balls" id="floating-balls-container"></div>
         <div class="marquee-container">
-            <div class="marquee-content gold-text">
-                DIGITAL MONEY COIN $DIGITAL DIGITAL MONEY COIN $DIGITAL DIGITAL MONEY COIN $DIGITAL
+            <div class="marquee-content old-text">
+                GENERATIONAL WEALTH $OLDMONEY GENERATIONAL WEALTH $OLDMONEY GENERATIONAL WEALTH $OLDMONEY
             </div>
         </div>
 
@@ -49,16 +51,16 @@
         <section class="hero-section">
             <div class="net-worth-display">Net Worth: $<span id="net-worth">0</span></div>
             
-            <div class="hero-image-container">
-                <img src="./digital.jpg" alt="Digital Money Coin" id="main-logo" class="hero-image" onerror="this.src='https://via.placeholder.com/400x200/000000/ffd700?text=Save+image+as+digital.jpg'">
+            <div class="hero-image-container glitch-container">
+                <img src="./oldmoney.jpg" alt="Old Money Coin" id="main-logo" class="hero-image" onerror="this.src='https://via.placeholder.com/400x200/000000/ffffff?text=Save+image+as+oldmoney.jpg'">
             </div>
 
-            <h1 class="hero-title gold-text">$DIGITAL</h1>
-            <h2 class="hero-subtitle">DIGITAL MONEY COIN</h2>
-            <p class="hero-subtext">The vault is open. The king has arrived. Time to get rich.</p>
+            <h1 class="hero-title old-text">$OLDMONEY</h1>
+            <h2 class="hero-subtitle">GENERATIONAL WEALTH</h2>
+            <p class="hero-subtext">You don't make it. You inherit it.</p>
             
             <div class="hero-buttons">
-                <button class="btn-solid">BUY $DIGITAL</button>
+                <button class="btn-solid">BUY $OLDMONEY</button>
             </div>
 
             <div class="retro-box ca-box mt-10" style="margin-top: 3rem;">

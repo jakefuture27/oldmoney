@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (enterBtn) {
         enterBtn.addEventListener('click', () => {
-            introScreen.classList.add('vault-open');
+            introScreen.classList.add('tv-off');
             setTimeout(() => {
                 introScreen.style.display = 'none';
                 mainSite.style.display = 'block';
-            }, 2000); // Wait for vault door animation (2s)
+            }, 500); // Wait for tv turn off animation (0.5s)
         });
     }
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function spawnPhysicsCoin(x, y) {
         const coin = document.createElement('div');
-        const items = ['💰', '🪙', '💎', '💵'];
+        const items = ['🎩', '🕰️', '📜', '🗞️'];
         coin.innerText = items[Math.floor(Math.random() * items.length)];
         coin.className = 'physics-coin';
         coin.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
